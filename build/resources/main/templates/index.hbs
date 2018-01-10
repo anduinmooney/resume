@@ -1,0 +1,43 @@
+{{#partial "content"}}
+<div class = "jumbotron">
+<h1>Job List</h1>
+<div>
+
+{{#if posts}} <!--if posts exist, then -->
+       {{#each posts }} <!--loop-->
+        <div class = "well">
+        <p>Current Job Experience:</p>
+        <p>Job Title: {{ title }}</p> <!--show-->
+        <p>Name of Company: {{ name }}</p>
+        <p>Location: {{ location }}</p>
+        <p>Job Description: {{ content }}</p>
+        <p>Employment Date (mm-dd-yyyy): {{ employmentDate }}</p>
+        </div>
+       {{/each}}
+   {{else}} <!--no posts!-->
+    <p>No Recent Jobs!</p>
+   {{/if}}
+
+<p>Add a new Job from which you've worked:</p>
+
+<form action="/posts/new" method="POST">
+  <label for="title">Job Title:</label>
+  <input id="title" name="title" type="text">
+  <br></br>
+  <label for="name">Company Name:</label>
+  <input id="name" name="name" type="text">
+  <br></br>
+  <label for="location">Company Location:</label>
+  <input id="location" name="location" type="text">
+  <br></br>
+  <label for="content">Job Description and Duties:</label>
+  <input id="content" name="content" type="text">
+  <br></br>
+  <label for="employmentDate">Employment Date (mm-dd-yyyy):</label>
+  <input id="employmentDate" name="employmentDate" type="text">
+
+  <button type="submit" class="btn btn-danger">Add Job</button>
+</form>
+{{/partial}}
+
+{{> layout.hbs}}
